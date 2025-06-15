@@ -1,0 +1,89 @@
+<div style="position: absolute; top: 0; left: 0; right: 0; z-index: 2;">
+    <mat-toolbar style="background-color: transparent;" color="primary">
+        <a style="color: white; text-decoration: none;" [routerLink]="['/']">Explore Planner</a>
+    </mat-toolbar>
+</div>
+
+<div class="container">
+    <div class="form-section">
+        <mat-card style="background: #0000008a; color: white; box-shadow: 0 0 18px 0px #ffffff4d; padding: 20px;">
+            <mat-card-title>
+                <mat-form-field appearance="fill" style="width: 200px;">
+                    <mat-label>Planet</mat-label>
+                    <mat-select [value]="selectedPlanet" (valueChange)="planetChange($event)">
+                        <mat-option *ngFor="let planet of planets" [value]="planet.file">
+                            {{ planet.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-card-title>
+
+            <mat-card-header style="margin-bottom: 10px;">
+                <button mat-flat-button color="primary" (click)="import()" class="action" style="position: absolute; right: 10px; top: 10px;">Import (CSV)</button>
+                <input type="file" #fileInput (change)="onFileSelected($event)" accept=".csv" style="display: none;" />
+            </mat-card-header>
+
+            <mat-card-content [formGroup]="itineraryForm" style="width: 560px; height: 100%;">
+                <div formArrayName="stops">
+                    <div class="stop-group">
+                        <ng-container *ngFor="let stop of stops.controls; let i=index; let last=last" [formGroupName]="i">
+                            <div>
+                                <span>Place {{ i + 1 }}</span>
+                                <br />
+                                <br />
+                                <ng-container *ngIf="stop.get('city')?.value !== 'custom'">
+                                    <mat-form-field appearance="fill" style="margin-right: 10px; width: 200px;">
+                                        <mat-label>Place</mat-label>
+                                        <mat-select formControlName="city" (selectionChange)="onCityChange(i)">
+                                            <mat-option *ngFor="let city of predefinedCities" [value]="city.name">
+                                                {{ city.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </ng-container>
+
+                                <ng-container *ngIf="stop.get('city')?.value === 'custom'">
+                                    <mat-form-field appearance="fill" style="margin-right: 10px; width: 200px;">
+                                        <mat-label>Custom Place Name</mat-label>
+                                        <input matInput formControlName="name" />
+                                    </mat-form-field>
+                                </ng-container>
+
+                                <mat-form-field appearance="fill" style="margin-right: 10px; width: 155px;">
+                                    <mat-label>Date</mat-label>
+                                    <input matInput [matDatepicker]="picker" formControlName="date" />
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+
+                                <button mat-icon-button color="success" (click)="handleMoveUp(i)" aria-label="Move Up" class="action">
+                                    <mat-icon>keyboard_arrow_up</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="success" (click)="handleMoveDown(i)" aria-label="Move Down" class="action">
+                                    <mat-icon>keyboard_arrow_down</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="success" (click)="addStop(i)" aria-label="Add Place" class="action">
+                                    <mat-icon>add_circle</mat-icon>
+                                </button>
+
+                                <button mat-icon-button color="warn" (click)="removeStop(i)" aria-label="Remove Place" class="action">
+                                    <mat-icon>remove_circle</mat-icon>
+                                </button>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="footer-actions">
+                    <button mat-flat-button color="primary" (click)="saveItinerary()" [disabled]="!itineraryForm.valid">Save Itinerary (PDF)</button>
+
+                    <button mat-flat-button color="primary" (click)="saveItinerary(true)" [disabled]="!itineraryForm.valid">Save Itinerary (CSV)</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="globe-section">
+        <app-globe [stops]="liveStopsData" [planet]="selectedPlanet" (coordinateClick)="handleCoordinateClick($event)"></app-globe>
+    </div>
+</div>

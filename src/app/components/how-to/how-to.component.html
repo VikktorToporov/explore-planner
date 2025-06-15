@@ -1,0 +1,107 @@
+<canvas #threeCanvas class="three-canvas" style="background: black;"></canvas>
+
+<div class="page-wrapper">
+    <div style="position: absolute; top: 0; left: 0; right: 0; z-index: 2;">
+        <mat-toolbar style="background-color: transparent;" color="primary">
+            <a style="color: white; text-decoration: none;" [routerLink]="['/']">Explore Planner</a>
+        </mat-toolbar>
+    </div>
+
+    <header class="parallax-header">
+        <div #reveal class="reveal-me header-content">
+            <h1>Welcome to the Explore Planner</h1>
+            <p>Your journey through the cosmos begins here. Plan your voyage with an intuitive, visually-driven interface.</p>
+        </div>
+    </header>
+
+    <main class="content-grid">
+        <div class="left-panel">
+            <div #reveal class="reveal-me">
+                <h2>Two Ways to Add Locations</h2>
+                <p class="subtitle">Precision or exploration? Choose your method.</p>
+                <mat-accordion multi>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Select Place & Date</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Use the dropdown to pick a place, then choose a date. Your destination is instantly added to your journey.</p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Click the Globe</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Spin the interactive 3D globe and simply click. The coordinates are captured and added as a new point.</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+
+            <div #reveal class="reveal-me">
+                <h2>Dynamic View Options</h2>
+                <p class="subtitle">See the universe from multiple perspectives.</p>
+                <ul>
+                    <li>Seamlessly toggle between interactive <strong>Globe</strong> and classic <strong>Map</strong> views.</li>
+                    <li>Explore different celestial bodies—Earth, Moon, Jupiter, and Mars - with a simple dropdown.</li>
+                </ul>
+            </div>
+
+            <div #reveal class="reveal-me">
+                <h2>Effortless Import & Export</h2>
+                <p class="subtitle">Your data, your way. Take it with you.</p>
+                <ul>
+                    <li>Import a list of pre-planned locations from a <strong>CSV file</strong>.</li>
+                    <li>Download your current itinerary as a CSV or a beautifully formatted <strong>PDF document</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div #reveal class="reveal-me screenshot-frame">
+                <img
+                    src="assets/screenshots/planner-initial.png"
+                    alt="Interactive Globe Screenshot"
+                    (click)="openImageModal('assets/screenshots/planner-initial.png', 'Interactive Globe Screenshot', 'The interactive globe - click to add coordinates')"
+                    class="clickable-image"
+                />
+                <figcaption>The interactive globe - click to add coordinates</figcaption>
+            </div>
+            <div #reveal class="reveal-me screenshot-frame">
+                <img
+                    src="assets/screenshots/planner-earth-map.png"
+                    alt="Map View Screenshot"
+                    (click)="openImageModal('assets/screenshots/planner-earth-map.png', 'Map View Screenshot', 'Use the map view for a different perspective')"
+                    class="clickable-image"
+                />
+                <figcaption>Use the map view for a different perspective</figcaption>
+            </div>
+            <div #reveal class="reveal-me screenshot-frame">
+                <img
+                    src="assets/screenshots/planner-moon-globe.png"
+                    alt="Moon Globe Screenshot"
+                    (click)="openImageModal('assets/screenshots/planner-moon-globe.png', 'Moon Globe Screenshot', 'Select between different planets and moons')"
+                    class="clickable-image"
+                />
+                <figcaption>Select between different planets and moons</figcaption>
+            </div>
+        </div>
+    </main>
+
+    <footer class="parallax-footer">
+        <div #reveal class="reveal-me footer-content">
+            <h2>Ready to Start Exploring?</h2>
+            <p>Use the form or globe, import your data, and export and share it to the world.</p>
+            <a class="start-button" [routerLink]="['/Plan']" style="text-decoration: none;">Start Planning</a>
+        </div>
+    </footer>
+
+    <mat-toolbar color="primary" class="footer-toolbar" style="justify-content: space-between; font-size: 0.9rem; min-height: 100px;">
+        <div style="display: flex; width: 100%; align-items: center; justify-content: center; gap: 100px;">
+            <span>© 2025 Viktor Toporov</span>
+            <span>
+                Source code on
+                <a href="https://github.com/VikktorToporov" target="_blank" rel="noopener" style="color: #00bcd4; text-decoration: underline;">
+                    GitHub
+                </a>
+            </span>
+        </div>
+    </mat-toolbar>
+</div>

@@ -1,0 +1,11 @@
+<div class="image-modal-container">
+    <div class="image-modal-header">
+        <button mat-icon-button (click)="close()" class="close-button">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="image-modal-content">
+        <img [src]="data.src" [alt]="data.alt" class="modal-image" />
+        <p *ngIf="data.caption" class="image-caption">{{ data.caption }}</p>
+    </div>
+</div>

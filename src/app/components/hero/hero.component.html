@@ -1,0 +1,18 @@
+<div style="position: absolute; top: 0; left: 0; right: 0; z-index: 2;">
+    <mat-toolbar style="background-color: transparent;" color="primary">
+        <a style="color: white; text-decoration: none;" [routerLink]="['/']">Explore Planner</a>
+    </mat-toolbar>
+</div>
+
+<canvas #canvas class="webgl"></canvas>
+
+<div class="landing-content">
+    <h1>Craft Your Journey</h1>
+    <p>Build your next travel itinerary by selecting cities directly from the globe.</p>
+
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a class="start-button" [routerLink]="['/Plan']" style="text-decoration: none;">Start Planning</a>
+
+        <a class="how-to-button" [routerLink]="['/HowTo']" style="text-decoration: none;">How to use</a>
+    </div>
+</div>

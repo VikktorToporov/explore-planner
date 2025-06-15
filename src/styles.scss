@@ -1,0 +1,73 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$travel-app-theme: mat.define-theme(
+    (
+        color: (
+            theme-type: dark,
+            primary: mat.$cyan-palette,
+            tertiary: mat.$blue-palette,
+        ),
+        density: (
+            scale: 0,
+        ),
+    )
+);
+
+:root {
+    @include mat.all-component-themes($travel-app-theme);
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.success-snackbar {
+    .mat-mdc-snackbar-surface {
+        background-color: #4caf50 !important;
+        color: #003737 !important;
+    }
+
+    .mat-mdc-button.mat-mdc-snack-bar-action {
+        color: #003737 !important;
+    }
+}
+
+.error-snackbar .mat-mdc-snackbar-surface {
+    background-color: #f4433661 !important;
+    color: white !important;
+
+    .mat-mdc-button.mat-mdc-snack-bar-action {
+        color: white !important;
+    }
+}
+
+.warning-snackbar .mat-mdc-snackbar-surface {
+    background-color: #ff9800 !important;
+    color: white !important;
+}
+
+.info-snackbar .mat-mdc-snackbar-surface {
+    background-color: #2196f3 !important;
+    color: white !important;
+}
+
+.image-modal-panel .mat-mdc-dialog-container {
+    padding: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.image-modal-panel .mat-mdc-dialog-surface {
+    background: transparent;
+    box-shadow: none;
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgb(255 255 255 / 13%) !important;
+}
