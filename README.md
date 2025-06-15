@@ -1,6 +1,8 @@
 # Explore Planner
 Welcome to **Explore Planner**, a visually immersive planning tool that lets you chart your journey across Earth, the Moon, Jupiter, and Mars. With a powerful 3D globe interface, intuitive controls, and seamless import/export features, it's your cosmic assistant for building unforgettable itineraries.
 
+## [Online Preview](https://explore-planner.vercel.app/)
+
 ---
 
 ## Features
