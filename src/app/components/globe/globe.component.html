@@ -1,11 +1,13 @@
 <div style="position: relative; width: 100%; height: 100%;">
     <div #globeContainer class="globe-container"></div>
 
-    <button mat-flat-button color="accent" (click)="toggleDisplayMode()" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
-        {{isGlobeMode ? 'Switch to Map View' : 'Switch to Globe View'}}
-    </button>
+    <div class="globe-actions">
+        <button mat-flat-button color="accent" (click)="toggleDisplayMode()" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+            {{isGlobeMode ? 'Switch to Map View' : 'Switch to Globe View'}}
+        </button>
 
-    <button mat-flat-button color="primary" (click)="toggleAutoRotate()" [disabled]="!isGlobeMode" style="position: absolute; top: 60px; right: 10px; z-index: 10;">
-        {{autoRotateEnabled ? 'Disable Spinning' : 'Enable Spinning'}}
-    </button>
+        <button mat-flat-button color="primary" (click)="toggleAutoRotate()" [disabled]="!isGlobeMode" style="position: absolute; top: 60px; right: 10px; z-index: 10;">
+            {{autoRotateEnabled ? 'Disable Spinning' : 'Enable Spinning'}}
+        </button>
+    </div>
 </div>

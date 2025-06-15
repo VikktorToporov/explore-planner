@@ -23,7 +23,7 @@
                 <input type="file" #fileInput (change)="onFileSelected($event)" accept=".csv" style="display: none;" />
             </mat-card-header>
 
-            <mat-card-content [formGroup]="itineraryForm" style="width: 560px; height: 100%;">
+            <mat-card-content [formGroup]="itineraryForm" style="height: 100%;">
                 <div formArrayName="stops">
                     <div class="stop-group">
                         <ng-container *ngFor="let stop of stops.controls; let i=index; let last=last" [formGroupName]="i">
